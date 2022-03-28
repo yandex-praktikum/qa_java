@@ -9,7 +9,7 @@ import org.junit.runners.Parameterized;
 public class LionParameterizedTest {
     private final String sex;
     private final String expected;
-    private Feline feline = new Feline();
+    private final Feline feline = new Feline();
 
     public LionParameterizedTest(String sex, String expected) {
         this.sex = sex;
