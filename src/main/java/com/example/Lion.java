@@ -19,6 +19,10 @@ public class Lion {
         }
     }
 
+    public Lion(String gender) {
+
+    }
+
     public int getKittens() {
         if (this.hasMane) {
             return 0;
