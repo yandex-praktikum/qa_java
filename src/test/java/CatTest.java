@@ -1,0 +1,30 @@
+import com.example.Cat;
+import com.example.Feline;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+class CatTest {
+
+    @Mock
+    private Feline feline;
+
+    @Test
+    void testGetSound() {
+        Cat cat = new Cat(feline);
+        assertEquals("Мяу", cat.getSound());
+    }
+
+    @Test
+    void testGetFood() throws Exception {
+        when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        List<String> food = new Cat(feline).getFood();
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
+        verify(feline, times(1)).eatMeat();
+    }
+}
