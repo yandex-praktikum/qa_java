@@ -5,8 +5,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 class CatTest {
@@ -15,16 +17,17 @@ class CatTest {
     private Feline feline;
 
     @Test
-    void testGetSound() {
+    void getSound() {
         Cat cat = new Cat(feline);
         assertEquals("Мяу", cat.getSound());
     }
 
     @Test
-    void testGetFood() throws Exception {
-        when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        List<String> food = new Cat(feline).getFood();
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
+    void getFood() throws Exception {
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        when(feline.eatMeat()).thenReturn(expectedFood);
+        List<String> actualFood = new Cat(feline).getFood();
+        assertEquals(expectedFood, actualFood);
         verify(feline, times(1)).eatMeat();
     }
 }

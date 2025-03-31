@@ -1,28 +1,25 @@
 import com.example.Feline;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FelineTest {
-
+class FelineTest {
     @Test
-    void testEatMeat() throws Exception {
+    void eatMeat() throws Exception {
         Feline feline = new Feline();
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        assertEquals(expectedFood, feline.eatMeat());
     }
 
     @Test
-    void testGetFamily() {
+    void getFamily() {
         Feline feline = new Feline();
         assertEquals("Кошачьи", feline.getFamily());
     }
 
     @Test
-    void testGetKittensDefault() {
+    void getKittens() {
         Feline feline = new Feline();
         assertEquals(1, feline.getKittens());
     }
-
 }

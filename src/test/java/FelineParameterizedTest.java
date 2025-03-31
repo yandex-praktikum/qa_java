@@ -1,15 +1,13 @@
+import com.example.Feline;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.example.Feline;
 
-
-public class FelineParameterizedTest {
-
+class FelineParameterizedTest {
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 5, 10})
-    void getKittens_WithDifferentCounts_ReturnsCorrectValues(int count) {
+    @ValueSource(ints = {0, 1, 3, 10})
+    void getKittensReturnsCorrectCount(int kittensCount) {
         Feline feline = new Feline();
-        assertEquals(count, feline.getKittens(count));
+        assertEquals(kittensCount, feline.getKittens(kittensCount));
     }
 }

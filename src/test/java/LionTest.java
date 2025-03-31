@@ -10,26 +10,27 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class LionTest {
+    private static final List<String> EXPECTED_FOOD = List.of("Животные", "Птицы", "Рыба");
 
     @Mock
     private Feline feline;
 
     @Test
-    void testInvalidSexThrowsException() {
+    void invalidSexThrowsException() {
         assertThrows(Exception.class, () -> new Lion("Неизвестно", feline));
     }
 
     @Test
-    void testGetKittens() throws Exception {
+    void getKittens() throws Exception {
         when(feline.getKittens()).thenReturn(1);
         Lion lion = new Lion("Самец", feline);
         assertEquals(1, lion.getKittens());
     }
 
     @Test
-    void testGetFood() throws Exception {
-        when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+    void getFood() throws Exception {
+        when(feline.eatMeat()).thenReturn(EXPECTED_FOOD);
         Lion lion = new Lion("Самец", feline);
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
+        assertEquals(EXPECTED_FOOD, lion.getFood());
     }
 }
