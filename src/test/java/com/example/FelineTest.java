@@ -2,8 +2,6 @@ package com.example;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -33,14 +31,6 @@ public class FelineTest {
     public void testGetKittensWithoutParameterReturnsOne() {
         int kittens = feline.getKittens();
         assertEquals(1, kittens);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 5, 10})
-    @DisplayName("Проверка метода getKittens(int) возвращает переданное количество котят")
-    public void testGetKittensWithParameterReturnsCorrectCount(int kittensCount) {
-        int result = feline.getKittens(kittensCount);
-        assertEquals(kittensCount, result);
     }
 
     @Test

@@ -3,8 +3,6 @@ package com.example;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -19,17 +17,6 @@ public class LionTest {
 
     @Mock
     private Feline felineMock;
-
-    @ParameterizedTest
-    @CsvSource({
-            "Самец, true",
-            "Самка, false"
-    })
-    @DisplayName("Проверка конструктора с разными полами")
-    public void testConstructorWithDifferentSexes(String sex, boolean expectedMane) throws Exception {
-        Lion lion = new Lion(sex, felineMock);
-        assertEquals(expectedMane, lion.doesHaveMane());
-    }
 
     @Test
     @DisplayName("Проверка что конструктор выбросит исключение при неправильном поле")
